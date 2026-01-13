@@ -10,6 +10,7 @@ Recommended non-default settings for Backrooms Tutorial (Set these settings in t
 - Roll Speed: 3.0
 - Roll Size: 7.0
 - Distort Intensity: 0.01
+- Aberration: 0.01
 - Discolor: False
 - Warp Amount: 0.0
 - Vignette Intensity: 0.5
