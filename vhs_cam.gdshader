@@ -2,7 +2,19 @@
 https://godotshaders.com/shader/vhs-and-crt-monitor-effect/ ORIGINAL
 https://godotshaders.com/shader/vhs-and-crt-monitor-effect-2/ EDITED For Godot 4
 
-"Added the comments from the ORIGINAL code to the EDITED code." -- spaghettiSyntax
+"Added the comments from the ORIGINAL code to the EDITED code.
+
+Recommended non-default settings for Backrooms Tutorial (Set these settings in the inspector, not the code. Leave other settings at their default):
+
+- Resolution 1024 x 768 (Must match Project > Project Settings > General > Display > Window > Viewport Width (1024) Viewport Hieght (768)
+- Roll Speed: 3.0
+- Roll Size: 7.0
+- Distort Intensity: 0.01
+- Discolor: False
+- Warp Amount: 0.0
+- Vignette Intensity: 0.5
+
+-- spaghettiSyntax" 
 
 Shader from Godot Shaders - the free shader library.
 godotshaders.com/shader/VHS-and-CRT-monitor-effect
