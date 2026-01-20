@@ -6,6 +6,7 @@ https://godotshaders.com/shader/vhs-and-crt-monitor-effect-2/ EDITED For Godot 4
 
 Recommended non-default settings for Backrooms Tutorial (Set these settings in the inspector, not the code. Leave other settings at their default):
 
+- Overlay: True
 - Resolution 1024 x 768 (Must match Project > Project Settings > General > Display > Window > Viewport Width (1024) Viewport Hieght (768)
 - Roll Speed: 3.0
 - Roll Size: 7.0
