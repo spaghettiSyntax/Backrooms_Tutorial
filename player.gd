@@ -5,15 +5,18 @@ const SPEED = 3.0
 const MOUSE_SENSITIVITY = 0.003
 const BOB_FREQ = 2.0
 const BOB_AMP = 0.08
+const TAPES_TO_WIN = 1
 
 
 @onready var head: Node3D = $Head
 @onready var camera_3d: Camera3D = $Head/Camera3D
 @onready var flashlight: SpotLight3D = $Head/Camera3D/Flashlight
 @onready var interaction_ray: RayCast3D = $Head/Camera3D/InteractionRay
+@onready var interaction_label: Label = $PostProcessingLayer/VHSShader/CamcorderUI/InteractionLabel
 
 
 var t_bob = 0.0
+var tapes_collected = 0
 
 
 func _ready():
@@ -91,6 +94,18 @@ func _physics_process(delta: float) -> void:
 		camera_3d.transform.origin = camera_3d.transform.origin.lerp(Vector3.ZERO, 10 * delta)
 
 	move_and_slide()
+	
+	# UI Prompt Check
+	if interaction_ray.is_colliding():
+		var collider = interaction_ray.get_collider()
+		
+		# DUCK TYPING: Check if the collider has the variable "prompt_message"
+		if is_instance_valid(collider) and "prompt_message" in collider:
+			interaction_label.text = "Press E to " + collider.prompt_message
+		else:
+			interaction_label.text = ""
+	else:
+		interaction_label.text = ""
 
 
 func _headbob(time) -> Vector3:
@@ -103,3 +118,18 @@ func _headbob(time) -> Vector3:
 	pos.x = cos(time * BOB_FREQ / 2) * BOB_AMP
 	
 	return pos
+	
+	
+func collect_tape():
+	tapes_collected += 1
+	print("Tapes: " + str(tapes_collected) + "/" + str(TAPES_TO_WIN))
+	
+	# Check for win
+	if tapes_collected >= TAPES_TO_WIN:
+		win_game()
+		
+
+func win_game():
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	get_tree().change_scene_to_file("res://scenes/win_screen.tscn")
